@@ -5,6 +5,18 @@ new Vue({
     'user': $$user
   },
 
+  computed: {
+
+    toggleEditClass: function(){
+      return this.editingUsers ? "editing_users" : "";
+    },
+
+    filterReturnedNoUsers: function(){
+      return this.$eval("users | filterBy filterUser").length === 0;
+    }
+
+  },
+
   data: function(){
     return {
       users: [
@@ -28,7 +40,8 @@ new Vue({
             last_name: "Musk",
             dob: "22/02/1500",
         },
-      ]
+      ],
+      editingUsers: false,
     }
   },
 

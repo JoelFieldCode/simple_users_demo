@@ -4,11 +4,23 @@
     <meta charset="utf-8">
   </head>
   <body>
+    <style>
+
+      .editing_users{
+        background-color: #2ecc71;
+        color: #FFF;
+      }
+
+    </style>
 
     <section class ="table_demo">
         <input type = "text" v-model="filterUser" placeholder="Search for a user">
         <button v-on:click="addUser()">
           Add User
+        </button>
+
+        <button v-on:click="editingUsers = !editingUsers" v-bind:class="toggleEditClass">
+          Edit Users
         </button>
 
         <ul>
@@ -18,16 +30,27 @@
 
                 </user>
 
-                <input type = "text" v-model="user.first_name">
-                <input type = "text" v-model="user.last_name">
-                <input type = "text" v-model="user.dob">
-
                 <button v-on:click="removeUser(user)">
                   X
                 </button>
+
+                <div v-show="editingUsers">
+                  <br>
+                  <input type = "text" v-model="user.first_name">
+                  <input type = "text" v-model="user.last_name">
+                  <input type = "text" v-model="user.dob">
+                </div>
+
               </li>
+              <br>
             </template>
         </ul>
+        <div v-show="filterReturnedNoUsers">
+          No users found with your search..
+          <button v-on:click="filterUser = ''">
+            Clear Search?
+          </button>
+        </div>
     </section>
 
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js"> </script>

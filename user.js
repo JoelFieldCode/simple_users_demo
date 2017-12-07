@@ -20,7 +20,7 @@ var $$user = Vue.extend({
         return "Invalid Date entered";
       }
       return age;
-      
+
     }
 
   },
@@ -28,4 +28,5 @@ var $$user = Vue.extend({
   template: `
       {{fullName}} (<i>age {{age}}</i>)
   `
+  
 })
