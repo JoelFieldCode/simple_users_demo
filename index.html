@@ -6,28 +6,28 @@
   <body>
 
     <section class ="table_demo">
-      <input type = "text" v-model="filterUser" placeholder="Search for a user">
-      <button v-on:click="addUser()">
-        Add User
-      </button>
+        <input type = "text" v-model="filterUser" placeholder="Search for a user">
+        <button v-on:click="addUser()">
+          Add User
+        </button>
 
-      <ul>
-          <template v-for="user in users | filterBy filterUser">
-            <li>
-              <user :user="user">
+        <ul>
+            <template v-for="user in users | filterBy filterUser">
+              <li>
+                <user :user="user">
 
-              </user>
+                </user>
 
-              <input type = "text" v-model="user.first_name">
-              <input type = "text" v-model="user.last_name">
-              <input type = "text" v-model="user.dob">
+                <input type = "text" v-model="user.first_name">
+                <input type = "text" v-model="user.last_name">
+                <input type = "text" v-model="user.dob">
 
-              <button v-on:click="removeUser(user)">
-                X
-              </button>
-            </li>
-          </template>
-      </ul>
+                <button v-on:click="removeUser(user)">
+                  X
+                </button>
+              </li>
+            </template>
+        </ul>
     </section>
 
     <script src = "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.3/moment.min.js"> </script>
