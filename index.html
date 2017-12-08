@@ -14,36 +14,39 @@
     </style>
 
     <section class ="table_demo">
-        <input type = "text" placeholder="Search for a user">
-        <button>
+
+        <input type = "text" placeholder="Search for a user" v-model="userSearchFilter">
+        <button v-on:click="addUser()">
           Add User
         </button>
-
-        <button>
+        {{userEditing | json}}
+        <button v-bind:class="toggleEditClass" v-on:click="userEditing = !userEditing">
           Edit Users
         </button>
 
         <ul>
-            <template>
+            <template v-for="user in users | findUserSearch">
               <li>
+                <user :user="user">
 
-                <button>
+                </user>
+                <button v-on:click="removeUser(user)">
                   X
                 </button>
 
-                <div>
+                <div v-show="userEditing">
                   <br>
-                  <input type = "text">
-                  <input type = "text">
-                  <input type = "text">
+                  <input type = "text" v-model="user.first_name">
+                  <input type = "text" v-model="user.last_name">
+                  <input type = "text" v-model="user.dob">
                 </div>
 
               </li>
               <br>
             </template>
         </ul>
-
-        <div>
+        {{foundNoUsers | json}}
+        <div v-show="foundNoUsers === true">
           No users found with your search..
           <button>
             Clear Search?
@@ -55,5 +58,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/1.0.20/vue.min.js"></script>
     <script src = "user.js"> </script>
     <script src="app.js"></script>
+
   </body>
 </html>
