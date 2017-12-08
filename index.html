@@ -14,40 +14,38 @@
     </style>
 
     <section class ="table_demo">
-        <input type = "text" v-model="filterUser" placeholder="Search for a user">
-        <button v-on:click="addUser()">
+        <input type = "text" placeholder="Search for a user">
+        <button>
           Add User
         </button>
 
-        <button v-on:click="editingUsers = !editingUsers" v-bind:class="toggleEditClass">
+        <button>
           Edit Users
         </button>
 
         <ul>
-            <template v-for="user in users | filterBy filterUser">
+            <template>
               <li>
-                <user :user="user">
 
-                </user>
-
-                <button v-on:click="removeUser(user)">
+                <button>
                   X
                 </button>
 
-                <div v-show="editingUsers">
+                <div>
                   <br>
-                  <input type = "text" v-model="user.first_name">
-                  <input type = "text" v-model="user.last_name">
-                  <input type = "text" v-model="user.dob">
+                  <input type = "text">
+                  <input type = "text">
+                  <input type = "text">
                 </div>
 
               </li>
               <br>
             </template>
         </ul>
-        <div v-show="filterReturnedNoUsers">
+
+        <div>
           No users found with your search..
-          <button v-on:click="filterUser = ''">
+          <button>
             Clear Search?
           </button>
         </div>
