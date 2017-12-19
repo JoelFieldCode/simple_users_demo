@@ -7,44 +7,14 @@ new Vue({
 
   computed: {
 
-    toggleEditClass: function(){
-        return "editing_users";
-    },
-
-    foundNoUsers: function(){
-      return this.$eval("users | findUserSearch").length === 0;
-
-      console.log(users);
-      if(users.length === 0){
-        return true;
-      }
-      return false;
-    }
   },
 
   filters: {
-    addText: function(value){
-      return value + "added";
-    },
-
-    findUserSearch: function(value){
-      var that = this;
-      return value.filter(function(user){
-        var userName = user.first_name + user.last_name;
-
-        return userName.toLowerCase().indexOf(that.userSearchFilter.toLowerCase()) > -1;
-      });
-    }
-  },
-
-  computed: {
 
   },
 
   data: function(){
     return {
-      userSearchFilter: "",
-      userEditing: false,
       users: [
         {
           first_name: "Joel",
@@ -67,17 +37,6 @@ new Vue({
   },
 
   methods: {
-
-    removeUser: function(user){
-      this.users.$remove(user);
-    },
-
-    addUser: function(){
-      this.users.push({
-          first_name: "new",
-          last_name: "user",
-      });
-    }
 
   }
 })
